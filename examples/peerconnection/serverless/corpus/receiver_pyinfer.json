@@ -7,7 +7,7 @@
         "receiver": {
             "enabled": true,
             "listening_ip": "0.0.0.0",
-            "listening_port": 8000
+            "listening_port": 8001
         }
     },
     "bwe_feedback_duration": 200,
@@ -49,6 +49,6 @@
     },
     "logging": {
         "enabled": true,
-        "log_output_path": "webrtc.log"
+        "log_output_path": "receiver_webrtc.log"
     }
 }
