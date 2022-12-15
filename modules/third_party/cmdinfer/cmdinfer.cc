@@ -31,8 +31,8 @@ void cmdinfer::ReportStates(
 }
 
 float cmdinfer::GetEstimatedBandwidth() {
-    std::uint64_t bandwidth = 0;
-    std::cout << RequestBandwidthCommand << std::endl;
-    std::cin >> bandwidth;
+    std::uint64_t bandwidth = 12345;
+    //std::cout << RequestBandwidthCommand << std::endl;
+    //std::cin >> bandwidth;
     return static_cast<float>(bandwidth);
 }
