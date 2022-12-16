@@ -11,6 +11,7 @@
 #include "modules/congestion_controller/rtp/control_handler.h"
 
 #include <algorithm>
+#include <iostream>
 #include <vector>
 
 #include "api/units/data_rate.h"
@@ -74,9 +75,13 @@ absl::optional<TargetTransferRate> CongestionControlHandler::GetUpdate() {
             new_outgoing.network_estimate.loss_rate_ratio ||
         last_reported_->network_estimate.round_trip_time !=
             new_outgoing.network_estimate.round_trip_time))) {
-    if (encoder_paused_in_last_report_ != pause_encoding)
+    if (encoder_paused_in_last_report_ != pause_encoding){
+      std::time_t now = time(0);
+      char* dt = std::ctime(&now);
       RTC_LOG(LS_INFO) << "Bitrate estimate state changed, BWE: "
-                       << ToString(log_target_rate) << ".";
+                       << ToString(log_target_rate) << " at time "
+		       << dt;
+    }
     encoder_paused_in_last_report_ = pause_encoding;
     last_reported_ = new_outgoing;
     return new_outgoing;
